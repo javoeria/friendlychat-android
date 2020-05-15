@@ -43,6 +43,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
@@ -326,6 +327,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.crash_menu:
+                Log.w("Crashlytics", "Crash button clicked");
+                causeCrash();
+                return true;
             case R.id.sign_out_menu:
                 mFirebaseAuth.signOut();
                 Auth.GoogleSignInApi.signOut(mGoogleApiClient);
@@ -413,6 +418,10 @@ public class MainActivity extends AppCompatActivity
     private void logMessageSent() {
         // Log message has been sent.
         FirebaseAnalytics.getInstance(this).logEvent("message", null);
+    }
+
+    private void causeCrash() {
+        Crashlytics.getInstance().crash();
     }
 
 }
