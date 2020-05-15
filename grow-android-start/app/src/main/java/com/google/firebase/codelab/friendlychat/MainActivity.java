@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity
         TextView messageTextView;
         ImageView messageImageView;
         TextView messengerTextView;
+        TextView messengerDateView;
         CircleImageView messengerImageView;
 
         public MessageViewHolder(View v) {
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity
             messageTextView = (TextView) itemView.findViewById(R.id.messageTextView);
             messageImageView = (ImageView) itemView.findViewById(R.id.messageImageView);
             messengerTextView = (TextView) itemView.findViewById(R.id.messengerTextView);
+            messengerDateView = (TextView) itemView.findViewById(R.id.messengerDateView);
             messengerImageView = (CircleImageView) itemView.findViewById(R.id.messengerImageView);
         }
     }
@@ -221,6 +223,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 viewHolder.messengerTextView.setText(friendlyMessage.getName());
+                viewHolder.messengerDateView.setText(friendlyMessage.getDate());
                 if (friendlyMessage.getPhotoUrl() == null) {
                     viewHolder.messengerImageView.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,
                             R.drawable.ic_account_circle_black_36dp));
