@@ -15,6 +15,7 @@
  */
 package com.google.firebase.codelab.friendlychat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -186,7 +187,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             protected void onBindViewHolder(final MessageViewHolder viewHolder,
                                             int position,
-                                            FriendlyMessage friendlyMessage) {
+                                            final FriendlyMessage friendlyMessage) {
                 mProgressBar.setVisibility(ProgressBar.INVISIBLE);
                 if (friendlyMessage.getText() != null) {
                     viewHolder.messageTextView.setText(friendlyMessage.getText());
@@ -217,8 +218,17 @@ public class MainActivity extends AppCompatActivity
                                 .load(friendlyMessage.getImageUrl())
                                 .into(viewHolder.messageImageView);
                     }
-                    viewHolder.messageImageView.setVisibility(ImageView.VISIBLE);
                     viewHolder.messageTextView.setVisibility(TextView.GONE);
+                    viewHolder.messageImageView.setVisibility(ImageView.VISIBLE);
+                    viewHolder.messageImageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Context context = v.getContext();
+                            Intent intent = new Intent(context, ImageActivity.class);
+                            intent.putExtra("image_url", friendlyMessage.getImageUrl());
+                            context.startActivity(intent);
+                        }
+                    });
                 }
 
 

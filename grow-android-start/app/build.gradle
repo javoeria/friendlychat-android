@@ -32,6 +32,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     // Google
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
@@ -46,8 +47,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-config'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-inappmessaging-display'
-    implementation 'com.google.firebase:firebase-analytics'
-    //Crashlytics
+
+    // Crashlytics
     implementation 'com.crashlytics.sdk.android:crashlytics'
 
     // Firebase UI
